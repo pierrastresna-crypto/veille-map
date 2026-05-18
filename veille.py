@@ -112,6 +112,7 @@ def construire_email(marches):
         titre    = m.get("title", "Sans titre")
         acheteur = m.get("buyer_name", "Non précisé")
         deadline = m.get("deadline", "Non précisée")
+        parution = m.get("published_at", m.get("publication_date", "Non précisée"))
         budget   = m.get("budget_max", "Non précisé")
         region   = m.get("region", "Non précisée")
         lien     = m.get("url", "#")
@@ -126,7 +127,10 @@ def construire_email(marches):
             <span style="color:#555;font-size:13px">🏛 {acheteur} &nbsp;|&nbsp; 📍 {region}</span>
           </td>
           <td style="padding:12px;border-bottom:1px solid #eee;white-space:nowrap;color:#555;font-size:13px">
-            ⏰ {deadline}
+            📅 Publié : {parution}
+          </td>
+          <td style="padding:12px;border-bottom:1px solid #eee;white-space:nowrap;color:#555;font-size:13px">
+            ⏰ Deadline : {deadline}
           </td>
           <td style="padding:12px;border-bottom:1px solid #eee;white-space:nowrap;color:#555;font-size:13px">
             💶 {budget_str}
@@ -146,6 +150,7 @@ def construire_email(marches):
         <thead>
           <tr style="background:#1a1a2e;color:white">
             <th style="padding:12px;text-align:left">Marché</th>
+            <th style="padding:12px;text-align:left">Publié le</th>
             <th style="padding:12px;text-align:left">Deadline</th>
             <th style="padding:12px;text-align:left">Budget</th>
             <th style="padding:12px;text-align:left">Source</th>
