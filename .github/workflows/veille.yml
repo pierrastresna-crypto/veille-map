@@ -1,1 +1,29 @@
+name: Veille Vidéo Mapping
 
+on:
+  schedule:
+    - cron: '0 7 * * 1'  # Chaque lundi à 7h UTC (8h France)
+  workflow_dispatch:      # Bouton pour lancer manuellement
+
+jobs:
+  veille:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Récupérer le code
+        uses: actions/checkout@v4
+
+      - name: Installer Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Installer les dépendances
+        run: pip install requests
+
+      - name: Lancer la veille
+        env:
+          TENDERAPI_KEY: ${{ secrets.TENDERAPI_KEY }}
+          GMAIL_ADDRESS: ${{ secrets.GMAIL_ADDRESS }}
+          GMAIL_PASSWORD: ${{ secrets.GMAIL_PASSWORD }}
+        run: python veille.py
