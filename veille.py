@@ -17,23 +17,59 @@ DESTINATAIRES = [
 ]
 
 MOTS_CLES = [
+    # Termes directs mapping
     "mapping", "vidéomapping", "video mapping",
+    "vidéo mapping", "projection mapping",
+    "videomapping",
+
+    # Projection architecturale
     "projection architecturale", "projection facade",
-    "projection façade", "son et lumière",
-    "spectacle lumineux", "animation lumineuse",
-    "parcours lumière", "fête des lumières",
-    "illuminations", "scénographie lumineuse",
-    "projection monumentale", "vidéoprojection",
-    "spectacle pyrotechnique mapping",
+    "projection façade", "projection monumentale",
+    "projection sur facade", "projection sur façade",
+    "projection sur batiment", "projection sur bâtiment",
+    "projections visuelles", "projections visuelles et sonores",
+    "vidéoprojection", "vidéo projection",
+    "images animées sur façade", "images animées sur facade",
+
+    # Son et lumière / spectacles lumineux
+    "son et lumière", "son et lumiere",
+    "spectacle son et lumière", "spectacle son et lumiere",
+    "spectacle lumineux", "spectacle lumière",
+    "spectacle de lumière", "spectacle de lumiere",
+    "animation lumineuse", "animations lumineuses",
+    "création lumineuse", "creations lumineuses",
+    "mise en lumière", "mise en lumiere",
+
+    # Parcours / fêtes
+    "parcours lumière", "parcours lumineux",
+    "fête des lumières", "fete des lumieres",
+    "festival lumière", "festival lumieres",
+    "nuit des lumières", "nuit des lumieres",
+    "illuminations", "illuminations de noel",
+    "illuminations de noël",
+
+    # Scénographie
+    "scénographie lumineuse", "scenographie lumineuse",
+    "scénographie numérique", "scenographie numerique",
+    "installation lumineuse", "installations lumineuses",
+    "installation audiovisuelle", "installations audiovisuelles",
+
+    # Fêtes de fin d'année / célébrations
+    "fêtes de fin d'année", "fetes de fin d'annee",
     "fin d'année", "fin d'annee",
     "célébration", "celebration",
-    "feux d'artifice mapping",
+    "animations noel", "animations noël",
+
+    # Codes CPV officiels BOAMP
+    "92140000",   # Services de projection de vidéos
+    "92312000",   # Services fournis par les arts du spectacle
+    "92111300",   # Production de films et vidéos d'information
 ]
 
 # ── Récupération des marchés BOAMP via TenderAPI ───────────────
 def get_marches():
     resultats = []
-    date_depuis = (datetime.now() - timedelta(days=7)).strftime("%Y-%m-%d")
+    date_depuis = (datetime.now() - timedelta(days=30)).strftime("%Y-%m-%d")
 
     for mot in MOTS_CLES:
         try:
