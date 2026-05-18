@@ -1,4 +1,4 @@
-name: Veille Vidéo Mapping
+name: Veille Video Mapping
 
 on:
   schedule:
@@ -10,18 +10,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Récupérer le code
+      - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Installer Python
+      - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
 
-      - name: Installer les dépendances
+      - name: Install dependencies
         run: pip install requests
 
-      - name: Lancer la veille
+      - name: Run veille
         env:
           TENDERAPI_KEY: ${{ secrets.TENDERAPI_KEY }}
           GMAIL_ADDRESS: ${{ secrets.GMAIL_ADDRESS }}
